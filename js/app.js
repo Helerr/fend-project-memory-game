@@ -21,6 +21,15 @@ const stars = document.querySelectorAll(".fa-star");
 // variable for matched cards
 let matchedCard = document.getElementsByClassName("match");
 
+//stars list
+ let starsList = document.querySelectorAll(".stars li");
+
+//variable for congrats pop-up
+ let modal = document.getElementById("popup1")
+
+//variable for close icon
+ let closeicon = document.querySelector(".close");
+
 //function to toggle cards classes
 let displayCard = function() {
   this.classList.toggle("open");
@@ -187,6 +196,43 @@ function startGame(){
     clearInterval(interval);
 }
 
+//function to display stats on congratulations banner
+function congratulations(){
+    if (matchedCard.length == 16){
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
+
+        // show congratulations modal
+        modal.classList.add("show");
+
+        // declare star rating variable
+        var starRating = document.querySelector(".stars").innerHTML;
+
+        //showing move, rating, time on modal
+        document.getElementById("finalMove").innerHTML = moves;
+        document.getElementById("starRating").innerHTML = starRating;
+        document.getElementById("totalTime").innerHTML = finalTime;
+
+        //closeicon on modal
+        closeModal();
+    };
+}
+
+
+// @description close icon on modal
+function closeModal(){
+    closeicon.addEventListener("click", function(e){
+        modal.classList.remove("show");
+        startGame();
+    });
+}
+
+
+// @desciption for user to play Again
+function playAgain(){
+    modal.classList.remove("show");
+    startGame();
+}
 window.onload = startGame();
 
 /*
