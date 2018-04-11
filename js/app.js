@@ -81,6 +81,15 @@ function disable(){
   });
 };
 
+//enable cards and disable matched cards
+function enable(){
+  Array.prototype.filter.call(cards, function(card){
+    card.classList.remove("disabled");
+    for(let i = 0; i < matchedCard.length; i++){
+      matchedCard[i].classList.add("disabled");
+    }
+  });
+};
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
