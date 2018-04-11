@@ -4,17 +4,32 @@
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
+//deck that holds all the cards
+const deck = document.getElementsByClassName(".deck");
 
-
-//adding event listeners to each card
-for (var i=0; i< cards. length ; i++){
-  cards[i].addEventListener("click", displayCard);
-};
-
-var displayCard = function() {
+//function to toggle cards classes
+let displayCard = function() {
   this.classList.toggle("open");
   this.classList.toggle("show");
   this.classList.toggle("disabled");
+};
+
+//adding event listeners to each card
+for (let i=0; i< cards. length ; i++){
+  cards[i].addEventListener("click", displayCard);
+};
+
+
+
+//function to start the Game
+
+function startGame(){
+  let shuffledCards = shuffle(cards);
+  for(let i=0 ; i < shuffledCards.length; i++){
+    [].forEach.call(shuffledCards, function(item){
+      deck.appendChild(item);
+    });
+  }
 };
 
 /*
@@ -39,6 +54,7 @@ function shuffle(array) {
     return array;
 }
 
+document.body.onload = startGame();
 
 /*
  * set up the event listener for a card. If a card is clicked:
