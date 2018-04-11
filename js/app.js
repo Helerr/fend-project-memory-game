@@ -52,7 +52,7 @@ function cardOpen(){
   }
 };
 
-//when cards match
+//when cards match add class "match" and remove the other classes
 function matched(){
   openedCards[0].classList.add("match");
   openedCards[1].classList.add("match");
@@ -60,6 +60,27 @@ function matched(){
   openedCards[1].classList.remove("show", "open");
   openedCards = [];
 }
+
+//when cards don't match remove all classes and disable the cards for a bit
+function unmatched(){
+  openedCards[0].classList.add("unmatched");
+  openedCards[1].classList.add("unmatched");
+  disable();
+  setTimeout(function(){
+    openedCards[0].classList.remove("show", "open", "unmatched");
+    openedCards[1].classList.remove("show", "open", "unmatched");
+    enable();
+    openedCards = [];
+  }, 2000);
+};
+
+// function to disable the cards temporarily
+function disable(){
+  Array.prototype.filter.call(cards, function(card){
+    card.classList.add("disabled");
+  });
+};
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
