@@ -4,6 +4,9 @@
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
+//array for cards opened
+let openedCards = [];
+
 //deck that holds all the cards
 const deck = document.getElementsByClassName(".deck");
 
@@ -32,6 +35,31 @@ function startGame(){
   }
 };
 
+//matching the shuffledCards
+
+//add opened cards to an array and check if the cards match
+
+function cardOpen(){
+  openedCards.push(this);
+  let len = openedCards.length;
+  if (len === 2) {
+    moveCounter();
+    if(openedCards[0].type === openedCards[1].type){
+      matched();
+    } else {
+      unmatched();
+    }
+  }
+};
+
+//when cards match
+function matched(){
+  openedCards[0].classList.add("match");
+  openedCards[1].classList.add("match");
+  openedCards[0].classList.remove("show", "open");
+  openedCards[1].classList.remove("show", "open");
+  openedCards = [];
+}
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
