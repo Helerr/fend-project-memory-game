@@ -3,12 +3,23 @@
  */
 let card = document.getElementsByClassName("card");
 let cards = [...card];
+console.log(cards);
+
+//deck that holds all the cards
+const deck = document.querySelector(".deck");
 
 //array for cards opened
 let openedCards = [];
 
-//deck that holds all the cards
-const deck = document.getElementsByClassName(".deck");
+//moves variables
+let moves = 0;
+let counter = document.querySelector(".moves");
+
+//variable for stars icons
+const stars = document.querySelectorAll(".fa-star");
+
+// variable for matched cards
+let matchedCard = document.getElementsByClassName("match");
 
 //function to toggle cards classes
 let displayCard = function() {
@@ -18,78 +29,114 @@ let displayCard = function() {
 };
 
 //adding event listeners to each card
-for (let i=0; i< cards. length ; i++){
-  cards[i].addEventListener("click", displayCard);
+for (var i = 0; i < cards.length; i++){
+    card = cards[i];
+    card.addEventListener("click", displayCard);
+    card.addEventListener("click", cardOpen);
+    card.addEventListener("click",congratulations);
 };
-
-
-
-//function to start the Game
-
-function startGame(){
-  let shuffledCards = shuffle(cards);
-  for(let i=0 ; i < shuffledCards.length; i++){
-    [].forEach.call(shuffledCards, function(item){
-      deck.appendChild(item);
-    });
-  }
-};
-
-//matching the shuffledCards
 
 //add opened cards to an array and check if the cards match
 
-function cardOpen(){
-  openedCards.push(this);
-  let len = openedCards.length;
-  if (len === 2) {
-    moveCounter();
-    if(openedCards[0].type === openedCards[1].type){
-      matched();
-    } else {
-      unmatched();
+function cardOpen() {
+    openedCards.push(this);
+    var len = openedCards.length;
+    if(len === 2){
+        moveCounter();
+        if(openedCards[0].type === openedCards[1].type){
+            matched();
+        } else {
+            unmatched();
+        }
     }
-  }
 };
 
 //when cards match add class "match" and remove the other classes
 function matched(){
-  openedCards[0].classList.add("match");
-  openedCards[1].classList.add("match");
-  openedCards[0].classList.remove("show", "open");
-  openedCards[1].classList.remove("show", "open");
-  openedCards = [];
+    openedCards[0].classList.add("match", "disabled");
+    openedCards[1].classList.add("match", "disabled");
+    openedCards[0].classList.remove("show", "open", "no-event");
+    openedCards[1].classList.remove("show", "open", "no-event");
+    openedCards = [];
 }
 
 //when cards don't match remove all classes and disable the cards for a bit
 function unmatched(){
-  openedCards[0].classList.add("unmatched");
-  openedCards[1].classList.add("unmatched");
-  disable();
-  setTimeout(function(){
-    openedCards[0].classList.remove("show", "open", "unmatched");
-    openedCards[1].classList.remove("show", "open", "unmatched");
-    enable();
-    openedCards = [];
-  }, 2000);
-};
+    openedCards[0].classList.add("unmatched");
+    openedCards[1].classList.add("unmatched");
+    disable();
+    setTimeout(function(){
+        openedCards[0].classList.remove("show", "open", "no-event","unmatched");
+        openedCards[1].classList.remove("show", "open", "no-event","unmatched");
+        enable();
+        openedCards = [];
+    },1100);
+}
 
 // function to disable the cards temporarily
 function disable(){
-  Array.prototype.filter.call(cards, function(card){
-    card.classList.add("disabled");
-  });
-};
+    Array.prototype.filter.call(cards, function(card){
+        card.classList.add('disabled');
+    });
+}
 
 //enable cards and disable matched cards
 function enable(){
-  Array.prototype.filter.call(cards, function(card){
-    card.classList.remove("disabled");
-    for(let i = 0; i < matchedCard.length; i++){
-      matchedCard[i].classList.add("disabled");
+    Array.prototype.filter.call(cards, function(card){
+        card.classList.remove('disabled');
+        for(var i = 0; i < matchedCard.length; i++){
+            matchedCard[i].classList.add("disabled");
+        }
+    });
+}
+
+//function for move moveCounter
+function moveCounter(){
+    moves++;
+    counter.innerHTML = moves;
+    //start timer on first click
+    if(moves == 1){
+        second = 0;
+        minute = 0;
+        hour = 0;
+        startTimer();
     }
-  });
-};
+    // setting stars based on the number of moves moves
+    if (moves > 8 && moves < 14){
+        for( i= 0; i < 3; i++){
+            if(i > 1){
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+    else if (moves > 15){
+        for( i= 0; i < 3; i++){
+            if(i > 0){
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+}
+
+
+//game timer
+var second = 0, minute = 0;
+var timer = document.querySelector(".timer");
+var interval;
+function startTimer(){
+    interval = setInterval(function(){
+        timer.innerHTML = minute+"mins "+second+"secs";
+        second++;
+        if(second == 60){
+            minute++;
+            second = 0;
+        }
+        if(minute == 60){
+            hour++;
+            minute = 0;
+        }
+    },1000);
+}
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -112,7 +159,35 @@ function shuffle(array) {
     return array;
 }
 
-document.body.onload = startGame();
+//function to start the Game
+function startGame(){
+    // shuffle deck
+    cards = shuffle(cards);
+    // remove all exisiting classes from each card
+    for (var i = 0; i < cards.length; i++){
+        deck.innerHTML = "";
+        [].forEach.call(cards, function(item) {
+            deck.appendChild(item);
+        });
+        cards[i].classList.remove("show", "open", "match", "disabled");
+    }
+    // reset the moves number
+    moves = 0;
+    counter.innerHTML = moves;
+    // reset star rating
+    for (var i= 0; i < stars.length; i++){
+        stars[i].style.visibility = "visible";
+    }
+    //reset game timer
+    second = 0;
+    minute = 0;
+    hour = 0;
+    var timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    clearInterval(interval);
+}
+
+window.onload = startGame();
 
 /*
  * set up the event listener for a card. If a card is clicked:

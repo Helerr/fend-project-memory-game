@@ -81,6 +81,18 @@ h1 {
     font-size: 33px;
 }
 
+.deck .card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.75;
+}
 /*
  * Styles for the Score Panel
  */
@@ -106,4 +118,9 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.timer {
+	display: inline-block;
+	margin: 0 0.5rem;
 }
