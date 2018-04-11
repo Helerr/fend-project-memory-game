@@ -1,36 +1,34 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+  background: #ffffff url('../img/geometry2.png');
+  /* Background pattern from Subtle Patterns */
+  font-family: 'Coda', cursive;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 /*
@@ -38,251 +36,239 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
-    background: linear-gradient(160deg, #ff5c5c 0%, #00adff 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
+  width: 660px;
+  min-height: 680px;
+  background: linear-gradient(160deg, #ff5c5c 0%, #00adff 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
-    background: #2e3d49;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  height: 125px;
+  width: 125px;
+  background: #2e3d49;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .deck .card.open {
   transform: rotateY(0);
-	background: #02b3e4;
-	cursor: default;
-	animation-name: flipInY;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: 1s;
+  background: #02b3e4;
+  cursor: default;
+  animation-name: flipInY;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  animation-duration: 1s;
 }
 
 .deck .card.show {
-    font-size: 33px;
+  font-size: 33px;
 }
 
 .deck .card.match {
   cursor: default;
-	background: #E5F720;
-	font-size: 33px;
-	animation-name: rubberBand;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: 1s;
+  background: #E5F720;
+  font-size: 33px;
+  animation-name: rubberBand;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  animation-duration: 1s;
 }
 
 .deck .card.unmatched {
-	animation-name: pulse;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: 1s;
-	background: #e2043b;
+  animation-name: pulse;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  animation-duration: 1s;
+  background: #e2043b;
 }
 
 .deck .card.disabled {
-	pointer-events: none;
-	opacity: 0.75;
+  pointer-events: none;
+  opacity: 0.75;
 }
+
 /*
  * Styles for the Score Panel
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
 }
 
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
 
 .score-panel .restart {
-    float: right;
-    cursor: pointer;
+  float: right;
+  cursor: pointer;
 }
 
 .timer {
-	display: inline-block;
-	margin: 0 0.5rem;
+  display: inline-block;
+  margin: 0 0.5rem;
 }
 
 /* styles for end game popup */
 
 .overlay {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: linear-gradient(160deg, #ff5c5c 0%, #00adff 100%);
-	transition: opacity 500ms;
-	visibility: hidden;
-	opacity: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(160deg, #ff5c5c 0%, #00adff 100%);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .overlay:target {
-	visibility: visible;
-	opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .popup {
-	margin: 70px auto;
-	padding: 20px;
-	background: #ffffff;
-	border-radius: 5px;
-	width: 85%;
-	position: relative;
-	transition: all 5s ease-in-out;
-	font-family: Arial, sans-serif;
+  margin: 70px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 5px;
+  width: 85%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  font-family: Arial, sans-serif;
 }
 
 .popup h2 {
-	margin-top: 0;
-	font-family: Arial, sans-serif;
+  margin-top: 0;
+  font-family: Arial, sans-serif;
   text-align: center;
   font-weight: bold;
 }
 
 .popup .close {
-	position: absolute;
-	top: 20px;
-	right: 30px;
-	transition: all 200ms;
-	font-size: 30px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #333;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
 }
 
 .popup .close:hover {
-	color: #E5F720;
+  color: #E5F720;
 }
 
-.popup .content-1,
-.content-2 {
-	max-height: 30%;
-	overflow: auto;
-	text-align: center;
+.popup .content-1, .content-2 {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
   font-weight: bold;
 }
 
 .show {
-	visibility: visible !important;
-	opacity: 100 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #starRating li {
-	display: inline-block;
+  display: inline-block;
 }
 
 #play-again {
-
-	padding: 0.7rem 1rem;
-	font-size: 1.1rem;
-	display: block;
-	margin: 0 auto;
-	width: 50%;
-	font-family: Arial, sans-serif;
-	color: #ffffff;
-	border-radius: 5px;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  border-radius: 5px;
   font-weight: bold;
   background: linear-gradient(160deg, #00adff 0%, #ff5c5c 100%);
 }
 
 /* animations */
+
 @keyframes flipInY {
-	from {
-		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-		animation-timing-function: ease-in;
-		opacity: 0;
-	}
-
-	40% {
-		transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-		animation-timing-function: ease-in;
-	}
-
-	60% {
-		transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-		opacity: 1;
-	}
-
-	80% {
-		transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-	}
-
-	to {
-		transform: perspective(400px);
-	}
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
 }
 
 @keyframes rubberBand {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
-
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
-
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, .95, 1);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
-	}
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes pulse {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
-
-	50% {
-		transform: scale3d(1.2, 1.2, 1.2);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
-	}
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }
