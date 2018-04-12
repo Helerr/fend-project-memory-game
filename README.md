@@ -3,9 +3,9 @@
 ## Table of Contents
 
 * [Description](#description)
-* [Goal of the game](#goal of the game)
+* [Goal of the game](#goalofthegame)
 * [Instructions](#instructions)
-* [How the game was created](#how the game was created)
+* [How the game was created](#howthegamewascreated)
 * [Notes](#notes)
 
 ## Description
