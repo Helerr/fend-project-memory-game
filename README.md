@@ -3,7 +3,9 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Description](#description)
 * [Contributing](#contributing)
+* [Notes](#notes)
 
 ## Instructions
 
@@ -13,10 +15,18 @@ To get started, open `js/app.js` and start building out the app's functionality
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
+## Description
+
+This is a simple Memory Game. The goal is to match the pair of cards with as few moves as possible in the least time possible for the highest rating.
+The game was created in HTML, CSS and JavaScript and it's browser based.
+
+
 ## Contributing
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
-initial commit
+## Notes
+
+This is a project for Udacity Front End Developer Scholarship.
