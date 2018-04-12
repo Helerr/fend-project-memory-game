@@ -196,7 +196,7 @@ function startGame() {
 function congratulations() {
   if (matchedCard.length == 16) {
     clearInterval(interval);
-    finalTime = timer.innerHTML;
+    totalTime = timer.innerHTML;
 
     // show congratulations overlay
     overlay.classList.add("show");
@@ -205,9 +205,9 @@ function congratulations() {
     var starRating = document.querySelector(".stars").innerHTML;
 
     //showing move, rating, time on overlay
-    document.getElementById("finalMove").innerHTML = moves;
+    document.getElementById("lastMove").innerHTML = moves;
     document.getElementById("starRating").innerHTML = starRating;
-    document.getElementById("totalTime").innerHTML = finalTime;
+    document.getElementById("totalTime").innerHTML = totalTime;
 
     //closeicon on overlay
     closeoverlay();
