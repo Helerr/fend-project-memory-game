@@ -25,10 +25,16 @@ let matchedCard = document.getElementsByClassName("match");
 let starsList = document.querySelectorAll(".stars li");
 
 //variable for congrats pop-up
-let modal = document.getElementById("popup1")
+let overlay = document.getElementById("banner")
 
 //variable for close icon
 let closeicon = document.querySelector(".close");
+
+//game timer variables
+var second = 0,
+  minute = 0;
+var timer = document.querySelector(".timer");
+var interval;
 
 //function to toggle cards classes
 let displayCard = function() {
@@ -60,7 +66,7 @@ function cardOpen() {
   }
 };
 
-//when cards match add class "match" and remove the other classes
+//when cards match add class "match", disable the cards and remove the other classes
 function matched() {
   openedCards[0].classList.add("match", "disabled");
   openedCards[1].classList.add("match", "disabled");
@@ -99,7 +105,7 @@ function enable() {
   });
 }
 
-//function for move moveCounter
+//counter for the number of moves
 function moveCounter() {
   moves++;
   counter.innerHTML = moves;
@@ -126,13 +132,7 @@ function moveCounter() {
   }
 }
 
-
 //game timer
-var second = 0,
-  minute = 0;
-var timer = document.querySelector(".timer");
-var interval;
-
 function startTimer() {
   interval = setInterval(function() {
     timer.innerHTML = minute + "mins " + second + "secs";
@@ -198,46 +198,35 @@ function congratulations() {
     clearInterval(interval);
     finalTime = timer.innerHTML;
 
-    // show congratulations modal
-    modal.classList.add("show");
+    // show congratulations overlay
+    overlay.classList.add("show");
 
     // declare star rating variable
     var starRating = document.querySelector(".stars").innerHTML;
 
-    //showing move, rating, time on modal
+    //showing move, rating, time on overlay
     document.getElementById("finalMove").innerHTML = moves;
     document.getElementById("starRating").innerHTML = starRating;
     document.getElementById("totalTime").innerHTML = finalTime;
 
-    //closeicon on modal
-    closeModal();
+    //closeicon on overlay
+    closeoverlay();
   };
 }
 
 
-// @description close icon on modal
-function closeModal() {
+// exit icon on overlay
+function closeoverlay() {
   closeicon.addEventListener("click", function(e) {
-    modal.classList.remove("show");
+    overlay.classList.remove("show");
     startGame();
   });
 }
 
 
-// @desciption for user to play Again
+//button on overlay to play the game again
 function playAgain() {
-  modal.classList.remove("show");
+  overlay.classList.remove("show");
   startGame();
 }
 window.onload = startGame();
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
