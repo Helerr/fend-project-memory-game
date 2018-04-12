@@ -2,30 +2,38 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
 * [Description](#description)
-* [Contributing](#contributing)
+* [Goal of the game](#goal of the game)
+* [Instructions](#instructions)
+* [How the game was created](#how the game was created)
 * [Notes](#notes)
-
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
 ## Description
 
 This is a simple Memory Game. The goal is to match the pair of cards with as few moves as possible in the least time possible for the highest rating.
-The game was created in HTML, CSS and JavaScript and it's browser based.
 
 
-## Contributing
+## Goal of the game
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+Match all the cards and get a 3 star rating.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## Instructions
+
+* Download the .zip file and open index.html to play.
+* Click on a card to reveal it
+* Keep on revealing cards in pairs that match
+
+## How the game was created
+
+The game was created in HTML to create the wireframe, then styled with CSS and at last, the DOM was manipulated with Javascript to make it interactive.
+
+I also did the following:
+
+* a deck of cards that is shuffeled every time the game is refreshed or you want to play again
+* a move counter to count the moves that the player made (the moves are counted for each pair of cards)
+Example: If you reveal two cards, one move will be counted
+* added animations to the cards when they are revealed, they match or they don't match
+* created a congratulations pop-up that shows up when the game ends with all the stats and functionality to play again
 
 ## Notes
 
